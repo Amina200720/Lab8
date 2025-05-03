@@ -1,0 +1,24 @@
+import math
+def f(x):
+    return x**2 - math.log(x)
+a = 1.0
+b = 2.0
+if f(a) * f(b) >= 0:
+    print("Bu intervalda (a, b) kök yoxdur və ya üsul tətbiq edilə bilməz.")
+else:
+    eps = 1e-6 
+    iteration = 0
+    while (b - a) / 2 > eps:
+        c = (a + b) / 2
+        if f(c) == 0:
+            break  
+        elif f(a) * f(c) < 0:
+            b = c
+        else:
+            a = c
+        iteration += 1
+    print(f"Təqribi kök: {c}")
+    print(f"f({c}) = {f(c)}")
+    print(f"İterasiya sayı: {iteration}")
+
+
